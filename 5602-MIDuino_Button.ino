@@ -1,3 +1,15 @@
+/**
+ * MIDuino EWI YouTube Tutorial Code
+ * written by Astrid Lydia Johannsen
+ *
+ * https://www.youtube.com/watch?v=YNRCnk9FI3I
+ * 
+ * Copyright 2023 ellejohara
+ * GNU General Public License v3 or later
+ *
+ * This code was used with the Arduino UNO and Arduino Diecimila boards.
+ */
+
 bool buttonState, prevState;
 
 void setup() {
