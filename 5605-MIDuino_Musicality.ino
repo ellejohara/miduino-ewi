@@ -1,3 +1,15 @@
+/**
+ * MIDuino EWI YouTube Tutorial Code
+ * written by Astrid Lydia Johannsen
+ *
+ * https://www.youtube.com/watch?v=YNRCnk9FI3I
+ * 
+ * Copyright 2023 ellejohara
+ * GNU General Public License v3 or later
+ *
+ * This code was used with the Arduino UNO and Arduino Diecimila boards.
+ */
+
 #define NOTE_ON  0x0090 // 144
 #define NOTE_OFF 0x0080 // 128
 #define VELOCITY 0x007F // 127
