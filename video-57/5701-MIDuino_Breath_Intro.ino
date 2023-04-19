@@ -2,7 +2,7 @@
  * MIDuino EWI YouTube Tutorial Code - Part 2
  * written by Astrid Lydia Johannsen
  *
- * YOUTUBE LINK
+ * https://www.youtube.com/watch?v=93xHCjz47Ic
  * 
  * Copyright 2023 ellejohara
  * GNU General Public License v3 or later
