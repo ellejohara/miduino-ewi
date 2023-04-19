@@ -1,5 +1,5 @@
 /**
- * MIDuino EWI YouTube Tutorial Code
+ * MIDuino EWI YouTube Tutorial Code - Part 1
  * written by Astrid Lydia Johannsen
  *
  * https://www.youtube.com/watch?v=YNRCnk9FI3I
@@ -10,21 +10,10 @@
  * This code was used with the Arduino UNO and Arduino Diecimila boards.
  */
 
-#define NOTE_ON  0x0090 // 144
-#define NOTE_OFF 0x0080 // 128
-#define VELOCITY 0x007F // 127
-
-int thePins[] = {2};
-#define NUM_PINS sizeof(thePins);
-
-int note = 60;
-
 bool buttonState, prevState;
 
 void setup() {
-  for (int i = 0; i < NUM_PINS; i++) {
-    pinMode(thePins[i], INPUT_PULLUP);
-  }
+  pinMode(2, INPUT_PULLUP);
   Serial.begin(9600);
 }
 
@@ -33,19 +22,19 @@ void loop() {
   
   if (buttonState != prevState) {
     if (buttonState == HIGH) {
-      sendMidi(144, 60, 127);
+      Serial.write(144);
+      Serial.write(60);
+      Serial.write(127);
+      delay(250);
     }
     
     if (buttonState == LOW) {
-      sendMidi(128, 60, 127);
+      Serial.write(128);
+      Serial.write(60);
+      Serial.write(0);
+      delay(1000);
     }
   }
   
   prevState = buttonState;
-}
-
-void sendMidi(byte command, byte data1, byte data2) {
-  Serial.write(command);
-  Serial.write(data1);
-  Serial.write(data2);
 }

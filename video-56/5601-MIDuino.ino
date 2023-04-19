@@ -1,5 +1,5 @@
 /**
- * MIDuino EWI YouTube Tutorial Code
+ * MIDuino EWI YouTube Tutorial Code - Part 1
  * written by Astrid Lydia Johannsen
  *
  * https://www.youtube.com/watch?v=YNRCnk9FI3I
