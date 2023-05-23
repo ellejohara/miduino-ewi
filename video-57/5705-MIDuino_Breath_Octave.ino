@@ -96,7 +96,7 @@ void sendMidi(byte command, byte data1, byte data2) {
 	Serial.write(data2);
 }
 
-void midiRready() {
+void midiReady() {
 	sendMidi(NOTE_ON, 60, 100);
 	delay(125);
 	sendMidi(NOTE_OFF, 60, 0);
