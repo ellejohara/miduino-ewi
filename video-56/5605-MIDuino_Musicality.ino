@@ -15,7 +15,7 @@
 #define VELOCITY 0x007F // 127
 
 uint8_t thePins[] = {2};
-#define NUM_PINS sizeof(thePins);
+#define NUM_PINS sizeof(thePins)
 
 #define TONIC 60; // middle C
 int doubleHarmonic[] = {1, 3, 1, 2, 1, 3, 1};
