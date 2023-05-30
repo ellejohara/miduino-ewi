@@ -25,46 +25,46 @@ int note;
 bool buttonState[NUM_PINS], prevState[NUM_PINS];
 
 void setup() {
-  for (int i = 0; i < NUM_PINS; i++) {
-    pinMode(thePins[i], INPUT_PULLUP);
-  }
-  
-  scale[0] = TONIC;
-  for (int j = 0; j < 7; j++) {
-    note = note + doubleHarmonic[j];
-    scale[j + 1] = note;
-  }
-  Serial.begin(9600);
+    for (int i = 0; i < NUM_PINS; i++) {
+        pinMode(thePins[i], INPUT_PULLUP);
+    }
+
+    scale[0] = TONIC;
+    for (int j = 0; j < 7; j++) {
+        note = note + doubleHarmonic[j];
+        scale[j + 1] = note;
+    }
+    Serial.begin(9600);
 }
 
 void loop() {
-  for (int i = 0; i < NUM_PINS; i++) {
-    buttonState[i] = !digitalRead(2);
-    
-   if (buttonState[i] != prevState[i]) {
-     if (buttonState[i] == HIGH) {
-       note = scale[random(8)];
-       sendMidi(NOTE_ON, note, VELOCITY);
-      }
-    
-     if (buttonState[i] == LOW) {
-        sendMidi(NOTE_OFF, note, 0);
-      }
+    for (int i = 0; i < NUM_PINS; i++) {
+        buttonState[i] = !digitalRead(2);
+
+        if (buttonState[i] != prevState[i]) {
+            if (buttonState[i] == HIGH) {
+                note = scale[random(8)];
+                sendMidi(NOTE_ON, note, VELOCITY);
+            }
+
+            if (buttonState[i] == LOW) {
+                sendMidi(NOTE_OFF, note, 0);
+            }
+        }
+
+        prevState[i] = buttonState[i];
     }
-  
-    prevState[i] = buttonState[i];
-  }
 }
 
 void sendMidi(byte command, byte data1, byte data2) {
-  Serial.write(command);
-  Serial.write(data1);
-  Serial.write(data2);
+    Serial.write(command);
+    Serial.write(data1);
+    Serial.write(data2);
 }
 
 bool debounce(int i) {
-  static uint8_t state[NUM_PINS];
-  state[i] = state[i]<<1 | !digitalRead(thePins[i]);
-  delay(1);
-  return (state[i] == 0xff) ? HIGH : LOW;
+    static uint8_t state[NUM_PINS];
+    state[i] = state[i]<<1 | !digitalRead(thePins[i]);
+    delay(1);
+    return (state[i] == 0xff) ? HIGH : LOW;
 }
