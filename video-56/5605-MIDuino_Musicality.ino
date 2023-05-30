@@ -17,7 +17,7 @@
 uint8_t thePins[] = {2};
 #define NUM_PINS sizeof(thePins)
 
-#define TONIC 60; // middle C
+#define TONIC 60 // middle C
 int doubleHarmonic[] = {1, 3, 1, 2, 1, 3, 1};
 int scale[8];
 int note;

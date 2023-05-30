@@ -59,7 +59,7 @@ void loop() {
 
 		if (breathSensor < BREATH_ON) {
 			noteState = NOTE_OFF;
-			sendMidi(NOTE_OFF, notePlaying, 0);
+			sendMidi(NOTE_OFF, note, 0);
 		}
 	}
 
