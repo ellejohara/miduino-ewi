@@ -1,3 +1,15 @@
+/**
+ * MIDuino EWI YouTube Tutorial Code - Part 3
+ * written by Astrid Lydia Johannsen
+ *
+ * https://www.youtube.com/watch?v=QJIAJ1hFpyM
+ * 
+ * Copyright 2023 ellejohara
+ * GNU General Public License v3 or later
+ *
+ * This code was used with the Arduino UNO and Arduino Diecimila boards.
+ */
+
 // Breath Sensor Constants
 #define BREATH_PIN  A0
 #define BREATH_ON   50
