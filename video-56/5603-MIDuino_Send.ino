@@ -10,42 +10,42 @@
  * This code was used with the Arduino UNO and Arduino Diecimila boards.
  */
 
-#define NOTE_ON  0x0090 // 144
-#define NOTE_OFF 0x0080 // 128
-#define VELOCITY 0x007F // 127
+#define NOTE_ON  0x90
+#define NOTE_OFF 0x80
+#define VELOCITY 0x7F
 
 int thePins[] = {2};
-#define NUM_PINS sizeof(thePins);
-
-int note = 60;
+#define NUM_PINS sizeof(thePins)
 
 bool buttonState, prevState;
 
+int note = 60; // C3
+
 void setup() {
-  for (int i = 0; i < NUM_PINS; i++) {
-    pinMode(thePins[i], INPUT_PULLUP);
-  }
-  Serial.begin(9600);
+    for (int i = 0; i < NUM_PINS; i++) {
+        pinMode(thePins[i], INPUT_PULLUP);
+    }
+    Serial.begin(9600);
+    Serial.println("READY");
 }
 
 void loop() {
-  buttonState = !digitalRead(2);
-  
-  if (buttonState != prevState) {
-    if (buttonState == HIGH) {
-      sendMidi(144, 60, 127);
-    }
-    
-    if (buttonState == LOW) {
-      sendMidi(128, 60, 127);
-    }
-  }
-  
-  prevState = buttonState;
+	buttonState = !digitalRead(2);
+	
+	if (buttonState != prevState) {
+		if (buttonState == HIGH) {
+			sendMidi(NOTE_ON, note, VELOCITY);
+		}
+		if (buttonState == LOW) {
+			sendMidi(NOTE_OFF, note, 0);
+		}
+	}
+	
+	prevState = buttonState;
 }
 
-void sendMidi(byte command, byte data1, byte data2) {
-  Serial.write(command);
-  Serial.write(data1);
-  Serial.write(data2);
+void sendMidi(byte command, byte, data1, byte data2) {
+	Serial.write(command);
+	Serial.write(data1);
+	Serial.write(data2);
 }
